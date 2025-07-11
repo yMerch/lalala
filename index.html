@@ -5,6 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Xique Addons - Minecraft Bedrock</title>
     <style>
+        /* Fonte Minecraft */
+        @font-face {
+            font-family: 'Minecraft';
+            src: url('Minecraft.ttf') format('truetype');
+            font-display: swap;
+        }
+
         * {
             margin: 0;
             padding: 0;
@@ -14,7 +21,7 @@
         @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
         
         body {
-            font-family: 'Press Start 2P', monospace;
+            font-family: 'Minecraft', 'Press Start 2P', monospace;
             background: linear-gradient(135deg, #0f0f23 0%, #1a1a3e 50%, #2d2d5f 100%);
             color: #ffffff;
             overflow-x: hidden;
@@ -73,6 +80,7 @@
             font-weight: bold;
             color: #4CAF50;
             text-shadow: 2px 2px 0 #2D5A2D, 4px 4px 8px rgba(0,0,0,0.5);
+            font-family: 'Minecraft', 'Press Start 2P', monospace;
         }
 
         .nav-links {
@@ -88,6 +96,7 @@
             position: relative;
             font-size: 12px;
             text-shadow: 1px 1px 0 rgba(0,0,0,0.7);
+            font-family: 'Minecraft', 'Press Start 2P', monospace;
         }
 
         .nav-links a:hover {
@@ -133,6 +142,7 @@
             text-shadow: 3px 3px 0 #2D5A2D, 6px 6px 10px rgba(0,0,0,0.5);
             animation: glow 2s ease-in-out infinite alternate;
             letter-spacing: 2px;
+            font-family: 'Minecraft', 'Press Start 2P', monospace;
         }
 
         @keyframes glow {
@@ -146,6 +156,7 @@
             opacity: 0.9;
             text-shadow: 1px 1px 0 rgba(0,0,0,0.7);
             line-height: 1.8;
+            font-family: 'Minecraft', 'Press Start 2P', monospace;
         }
 
         .cta-button {
@@ -161,6 +172,7 @@
             text-shadow: 1px 1px 0 #2D5A2D;
             font-size: 14px;
             letter-spacing: 1px;
+            font-family: 'Minecraft', 'Press Start 2P', monospace;
         }
 
         .cta-button:hover {
@@ -189,6 +201,7 @@
             color: #4CAF50;
             text-shadow: 2px 2px 0 #2D5A2D, 4px 4px 8px rgba(0,0,0,0.5);
             letter-spacing: 1px;
+            font-family: 'Minecraft', 'Press Start 2P', monospace;
         }
 
         .addons-grid {
@@ -208,6 +221,7 @@
             position: relative;
             box-shadow: 0 6px 0 #2D1810, 0 12px 20px rgba(0,0,0,0.4);
             image-rendering: pixelated;
+            font-family: 'Minecraft', 'Press Start 2P', monospace;
         }
 
         .addon-card::before {
@@ -246,6 +260,7 @@
             z-index: 1;
             box-shadow: 0 4px 0 #2D1810;
             image-rendering: pixelated;
+            font-family: 'Minecraft', 'Press Start 2P', monospace;
         }
 
         .addon-card h3 {
@@ -255,6 +270,7 @@
             position: relative;
             z-index: 1;
             text-shadow: 1px 1px 0 #2D1810;
+            font-family: 'Minecraft', 'Press Start 2P', monospace;
         }
 
         .addon-card p {
@@ -265,6 +281,7 @@
             font-size: 10px;
             line-height: 1.6;
             text-shadow: 1px 1px 0 rgba(0,0,0,0.7);
+            font-family: 'Minecraft', 'Press Start 2P', monospace;
         }
 
         .download-btn {
@@ -274,7 +291,7 @@
             padding: 0.8rem 1.5rem;
             cursor: pointer;
             font-weight: bold;
-            font-family: 'Press Start 2P', monospace;
+            font-family: 'Minecraft', 'Press Start 2P', monospace;
             font-size: 10px;
             transition: all 0.3s ease;
             position: relative;
@@ -319,11 +336,13 @@
             color: #4CAF50;
             display: block;
             margin-bottom: 0.5rem;
+            font-family: 'Minecraft', 'Press Start 2P', monospace;
         }
 
         .stat-label {
             font-size: 1.1rem;
             opacity: 0.9;
+            font-family: 'Minecraft', 'Press Start 2P', monospace;
         }
 
         /* Modal */
@@ -348,6 +367,7 @@
             max-width: 600px;
             animation: modalSlide 0.3s ease;
             box-shadow: 0 8px 0 #2D1810, 0 16px 30px rgba(0,0,0,0.6);
+            font-family: 'Minecraft', 'Press Start 2P', monospace;
         }
 
         @keyframes modalSlide {
