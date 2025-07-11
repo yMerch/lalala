@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Xique Maps - Minecraft Bedrock</title>
+    <title>Xique Scripts - Minecraft Bedrock</title>
     <style>
         @font-face {
             font-family: 'Minecraft';
@@ -137,8 +137,8 @@
             transform: translateY(2px);
             box-shadow: 0 2px 0 #2D5A2D, 0 4px 10px rgba(0,0,0,0.3);
         }
-        /* Seção de Maps */
-        .maps-section {
+        /* Seção de Scripts */
+        .scripts-section {
             padding: 5rem 2rem;
             max-width: 1200px;
             margin: 0 auto;
@@ -154,13 +154,13 @@
             letter-spacing: 1px;
             font-family: 'Minecraft', 'Press Start 2P', monospace;
         }
-        .maps-grid {
+        .scripts-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 2rem;
             margin-top: 3rem;
         }
-        .map-card {
+        .script-card {
             background: linear-gradient(180deg, #8B4513 0%, #654321 50%, #4A2C17 100%);
             border: 4px solid #2D1810;
             padding: 2rem;
@@ -171,12 +171,15 @@
             box-shadow: 0 6px 0 #2D1810, 0 12px 20px rgba(0,0,0,0.4);
             image-rendering: pixelated;
             font-family: 'Minecraft', 'Press Start 2P', monospace;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
         }
-        .map-card:hover {
+        .script-card:hover {
             transform: translateY(-4px);
             box-shadow: 0 8px 0 #2D1810, 0 16px 25px rgba(0,0,0,0.5);
         }
-        .map-card h3 {
+        .script-card h3 {
             font-size: 16px;
             margin-bottom: 1rem;
             color: #FFD700;
@@ -185,7 +188,7 @@
             text-shadow: 1px 1px 0 #2D1810;
             font-family: 'Minecraft', 'Press Start 2P', monospace;
         }
-        .map-card p {
+        .script-card p {
             opacity: 0.9;
             margin-bottom: 1.5rem;
             position: relative;
@@ -210,6 +213,7 @@
             box-shadow: 0 4px 0 #2D5A2D, 0 8px 15px rgba(0,0,0,0.3);
             text-shadow: 1px 1px 0 #2D5A2D;
             letter-spacing: 1px;
+            align-self: flex-start;
         }
         .download-btn:hover {
             transform: translateY(-2px);
@@ -256,7 +260,7 @@
             .hero h1 {
                 font-size: 2.5rem;
             }
-            .maps-grid {
+            .scripts-grid {
                 grid-template-columns: 1fr;
             }
         }
@@ -266,10 +270,10 @@
     <!-- Header -->
     <header>
         <nav>
-            <div class="logo">BR Maps</div>
+            <div class="logo">BR Scripts</div>
             <ul class="nav-links">
                 <li><a href="#home">Início</a></li>
-                <li><a href="#maps">Maps</a></li>
+                <li><a href="#scripts">Scripts</a></li>
                 <li><a href="#stats">Stats</a></li>
                 <li><a href="#contato">Contato</a></li>
             </ul>
@@ -279,19 +283,19 @@
     <!-- Hero Section -->
     <section class="hero" id="home">
         <div class="hero-content">
-            <h1>Mapas Épicos</h1>
-            <p>Transforme seu Minecraft com os melhores mapas brasileiros! Só os clássicos, feitos com dedicação.</p>
-            <a href="#maps" class="cta-button">Explorar Mapas</a>
+            <h1>Scripts Épicos</h1>
+            <p>Transforme seu Minecraft com scripts brasileiros! Só os clássicos, feitos com dedicação.</p>
+            <a href="#scripts" class="cta-button">Explorar Scripts</a>
         </div>
     </section>
 
-    <!-- Maps Section -->
-    <section class="maps-section" id="maps">
-        <h2 class="section-title">Nosso Mapa</h2>
-        <div class="maps-grid">
-            <div class="map-card" onclick="window.location.href='https://youtube.com';">
-                <h3>Mapa Xique</h3>
-                <p>O clássico mapa brasileiro! Cheio de aventuras, desafios e surpresas para você e seus amigos.</p>
+    <!-- Scripts Section -->
+    <section class="scripts-section" id="scripts">
+        <h2 class="section-title">Nosso Script</h2>
+        <div class="scripts-grid">
+            <div class="script-card" onclick="window.location.href='https://youtube.com';">
+                <h3>aimbot + esp blatant script</h3>
+                <p>aimbot + esp blatant script</p>
                 <button class="download-btn" onclick="window.location.href='https://youtube.com'; event.stopPropagation();">Baixar / Ver no YouTube</button>
             </div>
         </div>
@@ -303,15 +307,15 @@
         <div class="stats-grid">
             <div class="stat-item">
                 <span class="stat-number" id="downloads">0</span>
-                <span class="stat-label">Downloads de mapas</span>
+                <span class="stat-label">Downloads de scripts</span>
             </div>
             <div class="stat-item">
                 <span class="stat-number" id="players">0</span>
                 <span class="stat-label">Jogadores</span>
             </div>
             <div class="stat-item">
-                <span class="stat-number" id="maps">1</span>
-                <span class="stat-label">Mapas</span>
+                <span class="stat-number" id="scripts">1</span>
+                <span class="stat-label">Scripts</span>
             </div>
             <div class="stat-item">
                 <span class="stat-number" id="rating">0</span>
@@ -326,7 +330,7 @@
             const stats = [
                 { id: 'downloads', target: 0 },
                 { id: 'players', target: 8750 },
-                { id: 'maps', target: 1 },
+                { id: 'scripts', target: 1 },
                 { id: 'rating', target: 4.9 }
             ];
             stats.forEach(stat => {
