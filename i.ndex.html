@@ -1,0 +1,645 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Xique Addons - Minecraft Bedrock</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+        
+        body {
+            font-family: 'Press Start 2P', monospace;
+            background: linear-gradient(135deg, #0f0f23 0%, #1a1a3e 50%, #2d2d5f 100%);
+            color: #ffffff;
+            overflow-x: hidden;
+            font-size: 12px;
+            line-height: 1.6;
+        }
+
+        /* Animação de partículas de fundo */
+        .particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: #4CAF50;
+            border-radius: 50%;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); opacity: 0.3; }
+            50% { transform: translateY(-20px) rotate(180deg); opacity: 1; }
+        }
+
+        /* Header com efeito glassmorphism */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-size: 20px;
+            font-weight: bold;
+            color: #4CAF50;
+            text-shadow: 2px 2px 0 #2D5A2D, 4px 4px 8px rgba(0,0,0,0.5);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: #ffffff;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            position: relative;
+            font-size: 12px;
+            text-shadow: 1px 1px 0 rgba(0,0,0,0.7);
+        }
+
+        .nav-links a:hover {
+            color: #4CAF50;
+            transform: translateY(-2px);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #4CAF50;
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+            z-index: 10;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            padding: 2rem;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            color: #4CAF50;
+            text-shadow: 3px 3px 0 #2D5A2D, 6px 6px 10px rgba(0,0,0,0.5);
+            animation: glow 2s ease-in-out infinite alternate;
+            letter-spacing: 2px;
+        }
+
+        @keyframes glow {
+            from { text-shadow: 0 0 20px rgba(76, 175, 80, 0.5); }
+            to { text-shadow: 0 0 30px rgba(76, 175, 80, 0.8); }
+        }
+
+        .hero p {
+            font-size: 16px;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+            text-shadow: 1px 1px 0 rgba(0,0,0,0.7);
+            line-height: 1.8;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background: linear-gradient(180deg, #5CBB5C 0%, #4A934A 50%, #3A7A3A 100%);
+            color: white;
+            text-decoration: none;
+            border: 3px solid #2D5A2D;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 0 #2D5A2D, 0 8px 15px rgba(0,0,0,0.3);
+            text-shadow: 1px 1px 0 #2D5A2D;
+            font-size: 14px;
+            letter-spacing: 1px;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 0 #2D5A2D, 0 10px 20px rgba(0,0,0,0.4);
+        }
+
+        .cta-button:active {
+            transform: translateY(2px);
+            box-shadow: 0 2px 0 #2D5A2D, 0 4px 10px rgba(0,0,0,0.3);
+        }
+
+        /* Seção de Addons */
+        .addons-section {
+            padding: 5rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 10;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 3rem;
+            color: #4CAF50;
+            text-shadow: 2px 2px 0 #2D5A2D, 4px 4px 8px rgba(0,0,0,0.5);
+            letter-spacing: 1px;
+        }
+
+        .addons-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .addon-card {
+            background: linear-gradient(180deg, #8B4513 0%, #654321 50%, #4A2C17 100%);
+            border: 4px solid #2D1810;
+            padding: 2rem;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            overflow: hidden;
+            position: relative;
+            box-shadow: 0 6px 0 #2D1810, 0 12px 20px rgba(0,0,0,0.4);
+            image-rendering: pixelated;
+        }
+
+        .addon-card::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(45deg, #FFD700, #FFA500, #FFD700);
+            z-index: -1;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .addon-card:hover::before {
+            opacity: 0.3;
+        }
+
+        .addon-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 0 #2D1810, 0 16px 25px rgba(0,0,0,0.5);
+        }
+
+        .addon-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(180deg, #8B4513 0%, #654321 100%);
+            border: 3px solid #2D1810;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            position: relative;
+            z-index: 1;
+            box-shadow: 0 4px 0 #2D1810;
+            image-rendering: pixelated;
+        }
+
+        .addon-card h3 {
+            font-size: 16px;
+            margin-bottom: 1rem;
+            color: #FFD700;
+            position: relative;
+            z-index: 1;
+            text-shadow: 1px 1px 0 #2D1810;
+        }
+
+        .addon-card p {
+            opacity: 0.9;
+            margin-bottom: 1.5rem;
+            position: relative;
+            z-index: 1;
+            font-size: 10px;
+            line-height: 1.6;
+            text-shadow: 1px 1px 0 rgba(0,0,0,0.7);
+        }
+
+        .download-btn {
+            background: linear-gradient(180deg, #5CBB5C 0%, #4A934A 50%, #3A7A3A 100%);
+            color: white;
+            border: 3px solid #2D5A2D;
+            padding: 0.8rem 1.5rem;
+            cursor: pointer;
+            font-weight: bold;
+            font-family: 'Press Start 2P', monospace;
+            font-size: 10px;
+            transition: all 0.3s ease;
+            position: relative;
+            z-index: 1;
+            box-shadow: 0 4px 0 #2D5A2D, 0 8px 15px rgba(0,0,0,0.3);
+            text-shadow: 1px 1px 0 #2D5A2D;
+            letter-spacing: 1px;
+        }
+
+        .download-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 0 #2D5A2D, 0 10px 20px rgba(0,0,0,0.4);
+        }
+
+        .download-btn:active {
+            transform: translateY(2px);
+            box-shadow: 0 2px 0 #2D5A2D, 0 4px 10px rgba(0,0,0,0.3);
+        }
+
+        /* Stats Section */
+        .stats-section {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 3rem 2rem;
+            text-align: center;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .stat-item {
+            padding: 1.5rem;
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: bold;
+            color: #4CAF50;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(5px);
+        }
+
+        .modal-content {
+            background: linear-gradient(180deg, #8B4513 0%, #654321 100%);
+            margin: 5% auto;
+            padding: 2rem;
+            border: 4px solid #2D1810;
+            width: 90%;
+            max-width: 600px;
+            animation: modalSlide 0.3s ease;
+            box-shadow: 0 8px 0 #2D1810, 0 16px 30px rgba(0,0,0,0.6);
+        }
+
+        @keyframes modalSlide {
+            from { transform: translateY(-50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+
+        .close:hover {
+            color: #4CAF50;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .addons-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Partículas de fundo -->
+    <div class="particles" id="particles"></div>
+
+    <!-- Header -->
+    <header>
+        <nav>
+            <div class="logo">🎮 BR Addons</div>
+            <ul class="nav-links">
+                <li><a href="#home">Início</a></li>
+                <li><a href="#addons">Addons</a></li>
+                <li><a href="#stats">Stats</a></li>
+                <li><a href="#contato">Contato</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1>Addons Épicos</h1>
+            <p>Transforme seu Minecraft com os melhores addons do Brasil! Criados com paixão e dedicação total.</p>
+            <a href="#addons" class="cta-button">Explorar Addons</a>
+        </div>
+    </section>
+
+    <!-- Addons Section -->
+    <section class="addons-section" id="addons">
+        <h2 class="section-title">Nossos Addons</h2>
+        <div class="addons-grid">
+            <div class="addon-card" onclick="openModal('dragonAddon')">
+                <div class="addon-icon">🐉</div>
+                <h3>Dragon Pack</h3>
+                <p>Adicione dragões épicos ao seu mundo! Voe pelos céus e domine os elementos com criaturas lendárias.</p>
+                <button class="download-btn">Baixar Agora</button>
+            </div>
+            
+            <div class="addon-card" onclick="openModal('magicAddon')">
+                <div class="addon-icon">🔮</div>
+                <h3>Magic Weapons</h3>
+                <p>Armas mágicas com poderes especiais! Bastões de fogo, gelo e raio para batalhas épicas.</p>
+                <button class="download-btn">Baixar Agora</button>
+            </div>
+            
+            <div class="addon-card" onclick="openModal('carsAddon')">
+                <div class="addon-icon">🚗</div>
+                <h3>Super Cars</h3>
+                <p>Carros realistas e velozes! Lamborghinis, Ferraris e mais para dominar as estradas.</p>
+                <button class="download-btn">Baixar Agora</button>
+            </div>
+            
+            <div class="addon-card" onclick="openModal('mobsAddon')">
+                <div class="addon-icon">👹</div>
+                <h3>Boss Mobs</h3>
+                <p>Chefes desafiadores com drops exclusivos! Teste suas habilidades contra criaturas poderosas.</p>
+                <button class="download-btn">Baixar Agora</button>
+            </div>
+            
+            <div class="addon-card" onclick="openModal('dimensionAddon')">
+                <div class="addon-icon">🌌</div>
+                <h3>New Dimensions</h3>
+                <p>Explore dimensões misteriosas! Mundos únicos com biomas e criaturas exclusivas.</p>
+                <button class="download-btn">Baixar Agora</button>
+            </div>
+            
+            <div class="addon-card" onclick="openModal('toolsAddon')">
+                <div class="addon-icon">⚔️</div>
+                <h3>Ultimate Tools</h3>
+                <p>Ferramentas poderosas e duráveis! Minere mais rápido e construa estruturas incríveis.</p>
+                <button class="download-btn">Baixar Agora</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats-section" id="stats">
+        <h2 class="section-title">Estatísticas</h2>
+        <div class="stats-grid">
+            <div class="stat-item">
+                <span class="stat-number" id="downloads">0</span>
+                <span class="stat-label">Downloads</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number" id="players">0</span>
+                <span class="stat-label">Jogadores</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number" id="addons">0</span>
+                <span class="stat-label">Addons</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number" id="rating">0</span>
+                <span class="stat-label">Avaliação</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Modal -->
+    <div id="addonModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <h2 id="modalTitle">Addon Title</h2>
+            <p id="modalDescription">Addon description</p>
+            <div style="margin-top: 2rem;">
+                <button class="download-btn" onclick="downloadAddon()">Download Direto</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Criar partículas animadas
+        function createParticles() {
+            const particlesContainer = document.getElementById('particles');
+            const particleCount = 50;
+            
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.top = Math.random() * 100 + '%';
+                particle.style.animationDelay = Math.random() * 6 + 's';
+                particle.style.animationDuration = (Math.random() * 3 + 3) + 's';
+                particlesContainer.appendChild(particle);
+            }
+        }
+
+        // Animar números das estatísticas
+        function animateStats() {
+            const stats = [
+                { id: 'downloads', target: 15420 },
+                { id: 'players', target: 8750 },
+                { id: 'addons', target: 24 },
+                { id: 'rating', target: 4.9 }
+            ];
+
+            stats.forEach(stat => {
+                const element = document.getElementById(stat.id);
+                let current = 0;
+                const increment = stat.target / 100;
+                
+                const timer = setInterval(() => {
+                    current += increment;
+                    if (current >= stat.target) {
+                        current = stat.target;
+                        clearInterval(timer);
+                    }
+                    
+                    if (stat.id === 'rating') {
+                        element.textContent = current.toFixed(1);
+                    } else {
+                        element.textContent = Math.floor(current).toLocaleString();
+                    }
+                }, 20);
+            });
+        }
+
+        // Modal functionality
+        const addonData = {
+            dragonAddon: {
+                title: "Dragon Pack",
+                description: "Este addon adiciona dragões épicos ao seu mundo Minecraft! Você pode domá-los, montá-los e usar seus poderes elementais. Inclui 5 tipos diferentes de dragões: Fogo, Gelo, Raio, Terra e Sombra. Cada dragão tem habilidades únicas e pode ser usado para exploração e combate."
+            },
+            magicAddon: {
+                title: "Magic Weapons",
+                description: "Armas mágicas poderosas com efeitos especiais! Inclui bastões elementais, espadas encantadas e arcos mágicos. Cada arma tem animações únicas e efeitos visuais impressionantes. Perfeito para aventuras épicas e batalhas contra mobs poderosos."
+            },
+            carsAddon: {
+                title: "Super Cars",
+                description: "Carros realistas e funcionais! Inclui Lamborghini, Ferrari, Porsche e outros carros esportivos. Todos os carros têm física realista, sons autênticos e podem ser personalizados. Transforme seu mundo Minecraft em uma pista de corrida!"
+            },
+            mobsAddon: {
+                title: "Boss Mobs",
+                description: "Chefes desafiadores com mecânicas únicas! Cada boss tem ataques especiais, fases de combate e drops exclusivos. Inclui 8 bosses diferentes com dificuldades variadas. Perfeito para jogadores que buscam desafios extremos."
+            },
+            dimensionAddon: {
+                title: "New Dimensions",
+                description: "Explore 3 dimensões completamente novas! Cada dimensão tem biomas únicos, criaturas exclusivas e recursos especiais. Inclui portais customizados e mecânicas de progressão. Uma expansão completa para seu mundo Minecraft."
+            },
+            toolsAddon: {
+                title: "Ultimate Tools",
+                description: "Ferramentas super poderosas e duráveis! Inclui picaretas que minam áreas inteiras, machados que cortam florestas e pás que escavam túneis. Todas as ferramentas têm efeitos visuais e sonoros únicos."
+            }
+        };
+
+        function openModal(addonKey) {
+            const modal = document.getElementById('addonModal');
+            const data = addonData[addonKey];
+            
+            document.getElementById('modalTitle').textContent = data.title;
+            document.getElementById('modalDescription').textContent = data.description;
+            
+            modal.style.display = 'block';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('addonModal');
+            modal.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+
+        function downloadAddon() {
+            alert('Download iniciado! O addon será baixado em breve.');
+            closeModal();
+        }
+
+        // Smooth scroll para links da navegação
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Efeito de scroll no header
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 50) {
+                header.style.background = 'rgba(0, 0, 0, 0.9)';
+            } else {
+                header.style.background = 'rgba(255, 255, 255, 0.1)';
+            }
+        });
+
+        // Intersection Observer para animar stats
+        const statsObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    animateStats();
+                    statsObserver.unobserve(entry.target);
+                }
+            });
+        });
+
+        // Fechar modal clicando fora
+        window.addEventListener('click', (e) => {
+            const modal = document.getElementById('addonModal');
+            if (e.target === modal) {
+                closeModal();
+            }
+        });
+
+        // Inicializar quando a página carregar
+        window.addEventListener('load', () => {
+            createParticles();
+            const statsSection = document.getElementById('stats');
+            if (statsSection) {
+                statsObserver.observe(statsSection);
+            }
+        });
+    </script>
+</body>
+</html>
