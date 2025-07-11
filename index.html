@@ -37,6 +37,7 @@
             font-weight: bold;
             color: #4CAF50;
             text-shadow: 2px 2px 0 #2D5A2D, 4px 4px 8px rgba(0,0,0,0.5);
+            letter-spacing: -1.5px;
         }
         .nav-links {
             display: flex;
@@ -47,6 +48,7 @@
             color: #ffffff;
             text-decoration: none;
             font-size: 12px;
+            letter-spacing: -1px;
         }
         .hero {
             height: 60vh;
@@ -65,6 +67,7 @@
             margin-bottom: 1rem;
             color: #4CAF50;
             text-shadow: 3px 3px 0 #2D5A2D, 6px 6px 10px rgba(0,0,0,0.5);
+            letter-spacing: -2px;
         }
         .cta-button {
             display: inline-block;
@@ -77,6 +80,7 @@
             text-shadow: 1px 1px 0 #2D5A2D;
             font-size: 16px;
             margin-top: 32px;
+            letter-spacing: -1.5px;
         }
         .scripts-section {
             padding: 3rem 2rem;
@@ -88,6 +92,7 @@
             font-size: 2rem;
             margin-bottom: 1.5rem;
             color: #4CAF50;
+            letter-spacing: -2px;
         }
         .scripts-grid {
             display: flex;
@@ -105,17 +110,20 @@
             display: flex;
             flex-direction: column;
             align-items: flex-start;
+            letter-spacing: -1.2px;
         }
         .script-card h3 {
             font-size: 18px;
             margin-bottom: 1rem;
             color: #FFD700;
             text-shadow: 1px 1px 0 #2D1810;
+            letter-spacing: -1.5px;
         }
         .script-card p {
             opacity: 0.95;
             margin-bottom: 1.5rem;
             font-size: 13px;
+            letter-spacing: -0.5px;
         }
         .download-btn {
             background: linear-gradient(180deg, #5CBB5C 0%, #4A934A 100%);
@@ -127,6 +135,7 @@
             font-family: 'Minecraft', 'Press Start 2P', monospace;
             font-size: 14px;
             text-shadow: 1px 1px 0 #2D5A2D;
+            letter-spacing: -1px;
         }
         .stats-section {
             background: rgba(0, 0, 0, 0.3);
@@ -147,10 +156,12 @@
             color: #4CAF50;
             display: block;
             margin-bottom: 0.5rem;
+            letter-spacing: -2px;
         }
         .stat-label {
             font-size: 1.1rem;
             opacity: 0.9;
+            letter-spacing: -1px;
         }
         @media (max-width: 800px) {
             .scripts-grid, .stats-grid {
@@ -210,7 +221,7 @@
                 <span class="stat-label">Players</span>
             </div>
             <div class="stat-item">
-                <span class="stat-number" id="scripts">1</span>
+                <span class="stat-number" id="scriptsCount">1</span>
                 <span class="stat-label">Scripts</span>
             </div>
             <div class="stat-item">
@@ -225,11 +236,12 @@
             const stats = [
                 { id: 'downloads', target: 0 },
                 { id: 'players', target: 8750 },
-                { id: 'scripts', target: 1 },
+                { id: 'scriptsCount', target: 1 },
                 { id: 'rating', target: 4.9 }
             ];
             stats.forEach(stat => {
                 const element = document.getElementById(stat.id);
+                if (!element) return;
                 let current = 0;
                 const increment = stat.target / 100;
                 const timer = setInterval(() => {
