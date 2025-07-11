@@ -3,26 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lalala Scripts - Roblox</title>
+    <title>Lalala Scripts</title>
     <style>
         @font-face {
             font-family: 'Minecraft';
             src: url('Minecraft.ttf') format('truetype');
             font-display: swap;
         }
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
         body {
             font-family: 'Minecraft', 'Press Start 2P', monospace;
             background: linear-gradient(135deg, #0f0f23 0%, #1a1a3e 50%, #2d2d5f 100%);
             color: #ffffff;
-            overflow-x: hidden;
-            font-size: 12px;
-            line-height: 1.6;
+            margin: 0;
+            min-height: 100vh;
         }
         header {
             position: fixed;
@@ -32,22 +25,18 @@
             backdrop-filter: blur(10px);
             border-bottom: 1px solid rgba(255, 255, 255, 0.2);
             z-index: 1000;
-            transition: all 0.3s ease;
         }
         nav {
             display: flex;
             justify-content: space-between;
             align-items: center;
             padding: 1rem 2rem;
-            max-width: 1200px;
-            margin: 0 auto;
         }
         .logo {
             font-size: 20px;
             font-weight: bold;
             color: #4CAF50;
             text-shadow: 2px 2px 0 #2D5A2D, 4px 4px 8px rgba(0,0,0,0.5);
-            font-family: 'Minecraft', 'Press Start 2P', monospace;
         }
         .nav-links {
             display: flex;
@@ -57,212 +46,119 @@
         .nav-links a {
             color: #ffffff;
             text-decoration: none;
-            transition: all 0.3s ease;
-            position: relative;
             font-size: 12px;
-            text-shadow: 1px 1px 0 rgba(0,0,0,0.7);
-            font-family: 'Minecraft', 'Press Start 2P', monospace;
-        }
-        .nav-links a:hover {
-            color: #4CAF50;
-            transform: translateY(-2px);
-        }
-        .nav-links a::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: #4CAF50;
-            transition: width 0.3s ease;
-        }
-        .nav-links a:hover::after {
-            width: 100%;
         }
         .hero {
-            height: 100vh;
+            height: 60vh;
             display: flex;
             align-items: center;
             justify-content: center;
             text-align: center;
-            position: relative;
-            z-index: 10;
+            margin-top: 60px;
         }
         .hero-content {
             max-width: 800px;
             padding: 2rem;
         }
         .hero h1 {
-            font-size: 3rem;
+            font-size: 2.2rem;
             margin-bottom: 1rem;
             color: #4CAF50;
             text-shadow: 3px 3px 0 #2D5A2D, 6px 6px 10px rgba(0,0,0,0.5);
-            animation: glow 2s ease-in-out infinite alternate;
-            letter-spacing: 2px;
-            font-family: 'Minecraft', 'Press Start 2P', monospace;
-        }
-        @keyframes glow {
-            from { text-shadow: 0 0 20px rgba(76, 175, 80, 0.5); }
-            to { text-shadow: 0 0 30px rgba(76, 175, 80, 0.8); }
-        }
-        .hero p {
-            font-size: 16px;
-            margin-bottom: 2rem;
-            opacity: 0.9;
-            text-shadow: 1px 1px 0 rgba(0,0,0,0.7);
-            line-height: 1.8;
-            font-family: 'Minecraft', 'Press Start 2P', monospace;
         }
         .cta-button {
             display: inline-block;
             padding: 1rem 2rem;
-            background: linear-gradient(180deg, #5CBB5C 0%, #4A934A 50%, #3A7A3A 100%);
+            background: linear-gradient(180deg, #5CBB5C 0%, #4A934A 100%);
             color: white;
-            text-decoration: none;
             border: 3px solid #2D5A2D;
             font-weight: bold;
-            transition: all 0.3s ease;
             box-shadow: 0 4px 0 #2D5A2D, 0 8px 15px rgba(0,0,0,0.3);
             text-shadow: 1px 1px 0 #2D5A2D;
-            font-size: 14px;
-            letter-spacing: 1px;
-            font-family: 'Minecraft', 'Press Start 2P', monospace;
+            font-size: 16px;
+            margin-top: 32px;
         }
-        .cta-button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 0 #2D5A2D, 0 10px 20px rgba(0,0,0,0.4);
-        }
-        .cta-button:active {
-            transform: translateY(2px);
-            box-shadow: 0 2px 0 #2D5A2D, 0 4px 10px rgba(0,0,0,0.3);
-        }
-        /* Scripts Section */
         .scripts-section {
-            padding: 5rem 2rem;
-            max-width: 1200px;
+            padding: 3rem 2rem;
+            max-width: 900px;
             margin: 0 auto;
-            position: relative;
-            z-index: 10;
-            min-height: 300px;
         }
         .section-title {
             text-align: center;
             font-size: 2rem;
-            margin-bottom: 3rem;
+            margin-bottom: 1.5rem;
             color: #4CAF50;
-            text-shadow: 2px 2px 0 #2D5A2D, 4px 4px 8px rgba(0,0,0,0.5);
-            letter-spacing: 1px;
-            font-family: 'Minecraft', 'Press Start 2P', monospace;
         }
         .scripts-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
+            display: flex;
+            justify-content: center;
         }
         .script-card {
-            background: linear-gradient(180deg, #8B4513 0%, #654321 50%, #4A2C17 100%);
+            background: linear-gradient(180deg, #8B4513 0%, #654321 100%);
             border: 4px solid #2D1810;
             padding: 2rem;
-            transition: all 0.3s ease;
-            cursor: pointer;
-            overflow: hidden;
-            position: relative;
+            margin: 1rem;
             box-shadow: 0 6px 0 #2D1810, 0 12px 20px rgba(0,0,0,0.4);
-            image-rendering: pixelated;
             font-family: 'Minecraft', 'Press Start 2P', monospace;
+            width: 320px;
+            text-align: left;
             display: flex;
             flex-direction: column;
             align-items: flex-start;
         }
-        .script-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 8px 0 #2D1810, 0 16px 25px rgba(0,0,0,0.5);
-        }
         .script-card h3 {
-            font-size: 16px;
+            font-size: 18px;
             margin-bottom: 1rem;
             color: #FFD700;
-            position: relative;
-            z-index: 1;
             text-shadow: 1px 1px 0 #2D1810;
-            font-family: 'Minecraft', 'Press Start 2P', monospace;
         }
         .script-card p {
-            opacity: 0.9;
+            opacity: 0.95;
             margin-bottom: 1.5rem;
-            position: relative;
-            z-index: 1;
-            font-size: 12px;
-            line-height: 1.6;
-            text-shadow: 1px 1px 0 rgba(0,0,0,0.7);
-            font-family: 'Minecraft', 'Press Start 2P', monospace;
+            font-size: 13px;
         }
         .download-btn {
-            background: linear-gradient(180deg, #5CBB5C 0%, #4A934A 50%, #3A7A3A 100%);
+            background: linear-gradient(180deg, #5CBB5C 0%, #4A934A 100%);
             color: white;
             border: 3px solid #2D5A2D;
-            padding: 0.8rem 1.5rem;
+            padding: 0.7rem 1.2rem;
             cursor: pointer;
             font-weight: bold;
             font-family: 'Minecraft', 'Press Start 2P', monospace;
-            font-size: 12px;
-            transition: all 0.3s ease;
-            position: relative;
-            z-index: 1;
-            box-shadow: 0 4px 0 #2D5A2D, 0 8px 15px rgba(0,0,0,0.3);
+            font-size: 14px;
             text-shadow: 1px 1px 0 #2D5A2D;
-            letter-spacing: 1px;
-            align-self: flex-start;
         }
-        .download-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 0 #2D5A2D, 0 10px 20px rgba(0,0,0,0.4);
-        }
-        .download-btn:active {
-            transform: translateY(2px);
-            box-shadow: 0 2px 0 #2D5A2D, 0 4px 10px rgba(0,0,0,0.3);
-        }
-        /* Stats Section */
         .stats-section {
             background: rgba(0, 0, 0, 0.3);
-            padding: 3rem 2rem;
+            padding: 2.5rem 2rem 2rem 2rem;
             text-align: center;
         }
         .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 2rem;
-            max-width: 800px;
-            margin: 0 auto;
+            display: flex;
+            justify-content: center;
+            gap: 32px;
         }
         .stat-item {
             padding: 1.5rem;
         }
         .stat-number {
-            font-size: 3rem;
+            font-size: 2.5rem;
             font-weight: bold;
             color: #4CAF50;
             display: block;
             margin-bottom: 0.5rem;
-            font-family: 'Minecraft', 'Press Start 2P', monospace;
         }
         .stat-label {
             font-size: 1.1rem;
             opacity: 0.9;
-            font-family: 'Minecraft', 'Press Start 2P', monospace;
         }
-        /* Responsive */
-        @media (max-width: 768px) {
-            .nav-links {
-                display: none;
+        @media (max-width: 800px) {
+            .scripts-grid, .stats-grid {
+                flex-direction: column;
+                align-items: center;
             }
-            .hero h1 {
-                font-size: 2.5rem;
-            }
-            .scripts-grid {
-                grid-template-columns: 1fr;
+            .script-card {
+                width: 95vw;
             }
         }
     </style>
@@ -276,7 +172,6 @@
                 <li><a href="#home">Home</a></li>
                 <li><a href="#scripts">Scripts</a></li>
                 <li><a href="#stats">Stats</a></li>
-                <li><a href="#contact">Contact</a></li>
             </ul>
         </nav>
     </header>
@@ -284,8 +179,8 @@
     <!-- Hero Section -->
     <section class="hero" id="home">
         <div class="hero-content">
-            <h1>Roblox Scripts</h1>
-            <p>Get your Roblox functions with the best scripts.</p>
+            <h1>Epic Roblox Scripts</h1>
+            <p>Enhance your Roblox experience with the best scripts! Only the classics, made with dedication.</p>
             <a href="#scripts" class="cta-button">Explore Scripts</a>
         </div>
     </section>
@@ -294,10 +189,10 @@
     <section class="scripts-section" id="scripts">
         <h2 class="section-title">Our Script</h2>
         <div class="scripts-grid">
-            <div class="script-card" onclick="window.location.href='https://youtube.com';">
+            <div class="script-card">
                 <h3>aimbot + esp blatant script</h3>
-                <p>Universal aimbot + ESP script for Roblox. Tryhard every game with wallhack and perfect aim. Blatant, updated, and easy to use</p>
-                <button class="download-btn" onclick="window.location.href='https://youtube.com'; event.stopPropagation();">Download / Watch on YouTube</button>
+                <p>Universal aimbot + ESP script for Roblox. Dominate every game with wallhack visuals and perfect aim. Blatant, updated, and easy to use!</p>
+                <button class="download-btn" onclick="window.location.href='https://youtube.com';">Download / Watch on YouTube</button>
             </div>
         </div>
     </section>
@@ -324,7 +219,6 @@
             </div>
         </div>
     </section>
-
     <script>
         // Animate stats numbers
         function animateStats() {
