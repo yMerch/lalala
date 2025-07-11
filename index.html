@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Xique Scripts - Minecraft Bedrock</title>
+    <title>Xique Scripts - Roblox</title>
     <style>
         @font-face {
             font-family: 'Minecraft';
@@ -137,13 +137,14 @@
             transform: translateY(2px);
             box-shadow: 0 2px 0 #2D5A2D, 0 4px 10px rgba(0,0,0,0.3);
         }
-        /* Seção de Scripts */
+        /* Scripts Section */
         .scripts-section {
             padding: 5rem 2rem;
             max-width: 1200px;
             margin: 0 auto;
             position: relative;
             z-index: 10;
+            min-height: 300px;
         }
         .section-title {
             text-align: center;
@@ -193,7 +194,7 @@
             margin-bottom: 1.5rem;
             position: relative;
             z-index: 1;
-            font-size: 10px;
+            font-size: 12px;
             line-height: 1.6;
             text-shadow: 1px 1px 0 rgba(0,0,0,0.7);
             font-family: 'Minecraft', 'Press Start 2P', monospace;
@@ -206,7 +207,7 @@
             cursor: pointer;
             font-weight: bold;
             font-family: 'Minecraft', 'Press Start 2P', monospace;
-            font-size: 10px;
+            font-size: 12px;
             transition: all 0.3s ease;
             position: relative;
             z-index: 1;
@@ -272,10 +273,10 @@
         <nav>
             <div class="logo">BR Scripts</div>
             <ul class="nav-links">
-                <li><a href="#home">Início</a></li>
+                <li><a href="#home">Home</a></li>
                 <li><a href="#scripts">Scripts</a></li>
                 <li><a href="#stats">Stats</a></li>
-                <li><a href="#contato">Contato</a></li>
+                <li><a href="#contact">Contact</a></li>
             </ul>
         </nav>
     </header>
@@ -283,35 +284,35 @@
     <!-- Hero Section -->
     <section class="hero" id="home">
         <div class="hero-content">
-            <h1>Scripts Épicos</h1>
-            <p>Transforme seu Minecraft com scripts brasileiros! Só os clássicos, feitos com dedicação.</p>
-            <a href="#scripts" class="cta-button">Explorar Scripts</a>
+            <h1>Epic Roblox Scripts</h1>
+            <p>Enhance your Roblox experience with the best scripts! Only the classics, made with dedication.</p>
+            <a href="#scripts" class="cta-button">Explore Scripts</a>
         </div>
     </section>
 
     <!-- Scripts Section -->
     <section class="scripts-section" id="scripts">
-        <h2 class="section-title">Nosso Script</h2>
+        <h2 class="section-title">Our Script</h2>
         <div class="scripts-grid">
             <div class="script-card" onclick="window.location.href='https://youtube.com';">
                 <h3>aimbot + esp blatant script</h3>
-                <p>aimbot + esp blatant script</p>
-                <button class="download-btn" onclick="window.location.href='https://youtube.com'; event.stopPropagation();">Baixar / Ver no YouTube</button>
+                <p>Universal aimbot + ESP script for Roblox. Dominate every game with wallhack visuals and perfect aim. Blatant, updated, and easy to use!</p>
+                <button class="download-btn" onclick="window.location.href='https://youtube.com'; event.stopPropagation();">Download / Watch on YouTube</button>
             </div>
         </div>
     </section>
 
     <!-- Stats Section -->
     <section class="stats-section" id="stats">
-        <h2 class="section-title">Estatísticas</h2>
+        <h2 class="section-title">Statistics</h2>
         <div class="stats-grid">
             <div class="stat-item">
                 <span class="stat-number" id="downloads">0</span>
-                <span class="stat-label">Downloads de scripts</span>
+                <span class="stat-label">Script downloads</span>
             </div>
             <div class="stat-item">
                 <span class="stat-number" id="players">0</span>
-                <span class="stat-label">Jogadores</span>
+                <span class="stat-label">Players</span>
             </div>
             <div class="stat-item">
                 <span class="stat-number" id="scripts">1</span>
@@ -319,13 +320,13 @@
             </div>
             <div class="stat-item">
                 <span class="stat-number" id="rating">0</span>
-                <span class="stat-label">Avaliação</span>
+                <span class="stat-label">Rating</span>
             </div>
         </div>
     </section>
 
     <script>
-        // Animar números das estatísticas
+        // Animate stats numbers
         function animateStats() {
             const stats = [
                 { id: 'downloads', target: 0 },
@@ -352,7 +353,7 @@
             });
         }
 
-        // Smooth scroll para links da navegação
+        // Smooth scroll for nav links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
@@ -366,7 +367,7 @@
             });
         });
 
-        // Efeito de scroll no header
+        // Header scroll effect
         window.addEventListener('scroll', () => {
             const header = document.querySelector('header');
             if (window.scrollY > 50) {
@@ -376,7 +377,7 @@
             }
         });
 
-        // Intersection Observer para animar stats
+        // Intersection Observer for stats animation
         const statsObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
@@ -386,7 +387,7 @@
             });
         });
 
-        // Inicializar quando a página carregar
+        // Init on page load
         window.addEventListener('load', () => {
             const statsSection = document.getElementById('stats');
             if (statsSection) {
